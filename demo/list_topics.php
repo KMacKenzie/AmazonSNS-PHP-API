@@ -5,9 +5,6 @@ include('../lib/amazonsns.class.php');
 
 $SNS = new AmazonSNS(AMAZON_ACCESS_KEY_ID, AMAZON_SECRET_ACCESS_KEY);
 
-$topics = $SNS->listTopics()->member;
+$topics = $SNS->listTopics();
 
-foreach($topics as $topic)
-{
-	print_r($topic);
-}
+print_r($topics);
