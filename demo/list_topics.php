@@ -7,4 +7,9 @@ $SNS = new AmazonSNS(AMAZON_ACCESS_KEY_ID, AMAZON_SECRET_ACCESS_KEY);
 
 $topics = $SNS->listTopics();
 
-print_r($topics);
+echo '<h1>Topics</h1>';
+
+foreach($topics as $topic)
+{
+	echo '<a href="show_topic.php?topic=' . $topic['TopicArn'] . '">' . $topic['TopicArn'] . '</a><br />';
+}
