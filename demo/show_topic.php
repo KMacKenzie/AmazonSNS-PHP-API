@@ -15,7 +15,7 @@ print_r($topic);
 
 echo '<h2>Subscriptions</h2>';
 
-$subs = $SNS->getSubscriptionsByTopic($topicArn);
+$subs = $SNS->listSubscriptionsByTopic($topicArn);
 
 foreach($subs as $sub)
 {
