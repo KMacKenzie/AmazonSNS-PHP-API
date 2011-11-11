@@ -9,7 +9,24 @@ $topics = $SNS->listTopics();
 
 echo '<h1>Topics</h1>';
 
+?>
+
+<table border="1">
+<tr><th>TopicArn</th><th></th></tr>
+<?php
 foreach($topics as $topic)
 {
-	echo '<a href="show_topic.php?topic=' . $topic['TopicArn'] . '">' . $topic['TopicArn'] . '</a><br />';
+	?>
+	<tr>
+		<td><a href="show_topic.php?topic=<?php echo $topic['TopicArn']; ?>"><?php echo $topic['TopicArn']; ?></a></td>
+		<td><a href="delete_topic.php?topic=<?php echo $topic['TopicArn']; ?>">Delete</a></td>
+	</tr>
+	<?php
 }
+?>
+
+<h3>New</h3>
+<form action="new_topic.php" method="post">
+	<input type="text" name="name" value="name" /><br />
+	<input type="submit" value="Create" />
+</form>

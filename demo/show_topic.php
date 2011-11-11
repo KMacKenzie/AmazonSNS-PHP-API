@@ -13,12 +13,14 @@ $subs = $SNS->listSubscriptionsByTopic($topicArn);
 
 ?>
 
+<a href="list_topics.php">Return to topics list</a>
 <h1>Topic</h1>
 
 <pre>
 <?php print_r($topic); ?>
 </pre>
 
+<h2>Publish</h2>
 <form method="post" action="publish.php">
 	<input type="hidden" name="topic" value="<?php echo $topicArn; ?>" />
 	<input type="text" name="subject" value="" /><br />
@@ -29,14 +31,44 @@ $subs = $SNS->listSubscriptionsByTopic($topicArn);
 <h2>Subscriptions</h2>
 
 <?php
-foreach($subs as $sub)
+if(count($subs) == 0)
+{
+	echo 'No subscriptions';
+}
+else
 {
 	?>
-	
-	<pre>
-	<?php print_r($sub); ?>
-	</pre>
-	
+	<table border="1">
+	<tr><th>Protocol</th><th>Endpoint</th><th>SubscriptionArn</th><th></th></tr>
+	<?php
+	foreach($subs as $sub)
+	{
+		?>
+		<tr>
+			<td><?php echo $sub['Protocol']; ?></td>
+			<td><?php echo $sub['Endpoint']; ?></td>
+			<td><?php echo $sub['SubscriptionArn']; ?></td>
+			<td><a href="remove_subscriber.php?topic=<?php echo $topicArn; ?>&subscription=<?php echo $sub['SubscriptionArn']; ?>">Unsubscribe</a></td>
+		</tr>
+		<?php
+	}
+	?>
+	</table>
 	<?php
 }
 ?>
+
+<h3>New</h3>
+<form action="add_subscriber.php" method="post">
+	<input type="hidden" name="topic" value="<?php echo $topicArn; ?>" />
+	<select name="protocol">
+		<option value="email">email</option>
+		<option value="email-json">email-json</option>
+		<option value="http">http</option>
+		<option value="https">https</option>
+		<option value="sqs">sqs</option>
+		<option value="sms">sms</option>
+	</select>
+	<input type="text" name="endpoint" value="endpoint" /><br />
+	<input type="submit" value="Subscribe" />
+</form>
