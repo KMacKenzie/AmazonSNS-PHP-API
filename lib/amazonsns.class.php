@@ -7,7 +7,7 @@
  * @author Chris Barr
  * @link http://aws.amazon.com/sns/
  * @link http://docs.amazonwebservices.com/sns/latest/api/
- * @version 0.5.0
+ * @version 0.5.1
  */
 class AmazonSNS
 {
@@ -23,7 +23,8 @@ class AmazonSNS
 				'US-WEST-2' => 'sns.us-west-2.amazonaws.com',
 				'EU-WEST-1' => 'sns.eu-west-1.amazonaws.com',
 				'AP-SE-1' => 'sns.ap-southeast-1.amazonaws.com',
-				'AP-NE-1' => 'sns.ap-northeast-1.amazonaws.com'
+				'AP-NE-1' => 'sns.ap-northeast-1.amazonaws.com',
+				'SA-EAST-1' => 'sns.sa-east-1.amazonaws.com'
 			);
 	
 	

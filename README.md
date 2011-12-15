@@ -1,4 +1,4 @@
-# Amazon SNS PHP API v0.5.0 Documentation #
+# Amazon SNS PHP API v0.5.1 Documentation #
 This API wrapper is a lightweight alternative to the official [Amazon aws-sdk-for-php](http://aws.amazon.com/sdkforphp) for access to Amazon SNS (Simple Notification Service) using PHP
 
 Find out more about Amazon SNS here - http://aws.amazon.com/sns
@@ -45,7 +45,7 @@ Available methods:
 * `subscribe($topicArn, $protocol, $endpoint)`
 * `unsubscribe($subscriptionArn)`
 
-To set the API region (US-EAST-1, US-WEST-1, EU-WEST-1, AP-SE-1 or AP-NE-1):
+To set the API region (US-EAST-1, US-WEST-1, EU-WEST-1, AP-SE-1, AP-NE-1 or SA-EAST-1):
 
 * `setRegion($region)`
 
@@ -54,6 +54,7 @@ To set the API region (US-EAST-1, US-WEST-1, EU-WEST-1, AP-SE-1 or AP-NE-1):
 ## Advanced Use ##
 A more complex example demonstrating catching Exceptions:
 
+	<?php
 	include('lib/amazonsns.class.php');
 	$AmazonSNS = new AmazonSNS(AMAZON_ACCESS_KEY_ID, AMAZON_SECRET_ACCESS_KEY);
 	$AmazonSNS->setRegion('EU-WEST-1');
