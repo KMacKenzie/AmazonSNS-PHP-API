@@ -390,7 +390,7 @@ class AmazonSNS
 	 * @param string $topicArn
 	 * @param string $protocol - http/https/email/email-json/sms/sqs
 	 * @param string $endpoint
-	 * @return bool
+	 * @return string $requestId 
 	 */
 	public function subscribe($topicArn, $protocol, $endpoint)
 	{
@@ -404,8 +404,8 @@ class AmazonSNS
 				'Endpoint' => $endpoint
 			)
 		);
-		
-		return true;
+
+		return strval($resultXml->ResponseMetadata->RequestId);
 	}
 	
 	
